@@ -5,20 +5,43 @@ import cn from 'clsx';
 
 import CartButton from "../components/CartButton";
 import {images, offers} from "@/constants";
+import { Link, Redirect } from "expo-router";
 // import useAuthStore from "@/store/auth.store";
+
+
 
 export default function Index() {
   // const { user } = useAuthStore();
-
+// const isAuth =false;
+// if (!isAuth) return <Redirect href={'/sign-in'} />
   return (
       <SafeAreaView className="flex-1 bg-white">
-          <FlatList
+      <FlatList
+        
+        //header
+           contentContainerClassName="pb-28 px-5"
+              ListHeaderComponent={() => (
+                  <View className="flex-between flex-row w-full my-5">
+                      <View className="flex-start">
+                          <Text className="small-bold text-primary">DELIVER TO</Text>
+                          <TouchableOpacity className="flex-center flex-row gap-x-1 mt-0.5">
+                              <Text className="paragraph-bold text-dark-100">Croatia</Text>
+                              <Image source={images.arrowDown} className="size-3" resizeMode="contain" />
+                          </TouchableOpacity>
+                      </View>
+
+                      <CartButton />
+                  </View>
+              )}
+
+        //body
               data={offers}
               renderItem={({ item, index }) => {
                   const isEven = index % 2 === 0;
 
                   return (
                       <View>
+                          <Link href={'/sign-in'}>Sign In</Link>
                           <Pressable
                               className={cn("offer-card", isEven ? 'flex-row-reverse' : 'flex-row')}
                               style={{ backgroundColor: item.color }}
@@ -47,20 +70,7 @@ export default function Index() {
                       </View>
                   )
               }}
-              contentContainerClassName="pb-28 px-5"
-              ListHeaderComponent={() => (
-                  <View className="flex-between flex-row w-full my-5">
-                      <View className="flex-start">
-                          <Text className="small-bold text-primary">DELIVER TO</Text>
-                          <TouchableOpacity className="flex-center flex-row gap-x-1 mt-0.5">
-                              <Text className="paragraph-bold text-dark-100">Croatia</Text>
-                              <Image source={images.arrowDown} className="size-3" resizeMode="contain" />
-                          </TouchableOpacity>
-                      </View>
-
-                      <CartButton />
-                  </View>
-              )}
+           
           />
       </SafeAreaView>
   );
