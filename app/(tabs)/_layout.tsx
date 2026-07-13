@@ -1,6 +1,14 @@
-import { Slot } from "expo-router";
+import { Tabs } from "expo-router";
 
-
-export default function TabLayout() {
-    return <Slot/>
+export default function Layout() {
+    return (
+        <Tabs>
+            <Tabs.Screen
+                name="index"
+                options={{
+                    headerShown: false,
+                }}
+            />
+        </Tabs>
+    );
 }

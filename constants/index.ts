@@ -68,7 +68,7 @@ export const offers = [
     {
         id: 1,
         title: "SUMMER COMBO",
-        image: burgerOne,
+        image: burgerTwo,
         color: "#D33B0D",
     },
     {
