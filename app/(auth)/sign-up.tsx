@@ -4,6 +4,7 @@ import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 
 import {useState} from "react";
+import { createUser } from '@/lib/appwrite';
 // import {signIn} from "@/lib/appwrite";
 // import * as Sentry from '@sentry/react-native'
 
@@ -18,16 +19,15 @@ const SignUp = () => {
 
         setIsSubmitting(true)
 
-        // try {
-        //     await signIn({ email, password });
+          try {
+            await createUser({ email,  password,  name });
 
-        //     router.replace('/');
-        // } catch(error: any) {
-        //     Alert.alert('Error', error.message);
-        //     Sentry.captureEvent(error);
-        // } finally {
-        //     setIsSubmitting(false);
-        // }
+            router.replace('/');
+        } catch(error: any) {
+            Alert.alert('Error', error.message);
+        } finally {
+            setIsSubmitting(false);
+        }
     }
 
     return (
