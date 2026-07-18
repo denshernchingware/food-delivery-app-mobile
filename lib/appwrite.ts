@@ -1,18 +1,24 @@
 import { CreateUserParams, SignInParams } from "@/type";
-import { Account, Avatars, Client, Databases, ID, Query } from "react-native-appwrite";
+import { Account, Avatars, Client, Databases, ID, Query, Storage } from "react-native-appwrite";
 import "react-native-url-polyfill/auto";
 
+const env = {
+    endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT,
+    projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID,
+    databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASEID,
+};
+
 export const appwriteConfig = {
-    endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT!,
+    endpoint: env.endpoint || "https://nyc.cloud.appwrite.io/v1",
     platform:"com.dmtech.food-delivery",
-    projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID!,
-    databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASEID!,
+    projectId: env.projectId || "6a596e6700107ceed22b",
+    databaseId: env.databaseId || "6a59789f003ca97f28ac",
     bucketId:'6a5be8a8002766076f6d',
     userCollectionId: 'user',
     categoriesCollectionId: 'categories',
     menuCollectionId: 'menu',
     customizationsCollectionId: 'customizations',
-    menuCustimizationsCollectionId:'menu_customizations'
+    menuCustomizationsCollectionId:'menu_customizations'
 }
 
 export const client = new Client()
@@ -22,6 +28,7 @@ export const client = new Client()
 
 export const account = new Account(client);
 export const databases = new Databases(client);
+export const storage = new Storage(client);
 export const avatars = new Avatars(client);
 
 
