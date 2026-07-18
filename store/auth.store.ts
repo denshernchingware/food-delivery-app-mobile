@@ -15,14 +15,16 @@ type AuthState = {
 }
 
 const useAuthStore = create<AuthState>((set) => ({
-    isAuthenticated: false,
-    user: null,
-    isLoading: true,
-
+    isAuthenticated: false, user: null, isLoading: true,
+    
     setIsAuthenticated: (value) => set({ isAuthenticated: value }),
     setUser: (user) => set({ user }),
     setLoading: (value) => set({isLoading: value}),
+   
+    
+    
 
+    
     fetchAuthenticatedUser: async () => {
         set({ isLoading: true });
 
@@ -43,8 +45,11 @@ const useAuthStore = create<AuthState>((set) => ({
                     isAuthenticated: true,
                     user: user as unknown as User,
                 });
-            } else {
-                set({ isAuthenticated: true, user: null });
+                 console.log('msg',JSON.stringify(user,null,2))
+               // return;
+            // } else {
+            //     set({ isAuthenticated: false, user: null });
+               
             }
         } catch (e) {
             console.log('fetchAuthenticatedUser error', e);
