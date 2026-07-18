@@ -6,8 +6,13 @@ export const appwriteConfig = {
     endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT!,
     platform:"com.dmtech.food-delivery",
     projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID!,
-    databaseId:process.env.EXPO_PUBLIC_APPWRITE_DATABASEID!,
-    userCollectionId:'user'
+    databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASEID!,
+    bucketId:'6a5be8a8002766076f6d',
+    userCollectionId: 'user',
+    categoriesCollectionId: 'categories',
+    menuCollectionId: 'menu',
+    customizationsCollectionId: 'customizations',
+    menuCustimizationsCollectionId:'menu_customizations'
 }
 
 export const client = new Client()
