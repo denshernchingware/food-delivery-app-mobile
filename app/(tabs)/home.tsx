@@ -41,7 +41,7 @@ export default function Index() {
 
                   return (
                       <View>
-                          <Link href={'/sign-in'}>Sign In</Link>
+                      {/* <Link href={'/sign-in'}>Sign In</Link> */}
                           <Pressable
                               className={cn("offer-card", isEven ? 'flex-row-reverse' : 'flex-row')}
                               style={{ backgroundColor: item.color }}
