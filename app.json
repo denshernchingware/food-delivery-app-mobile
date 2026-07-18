@@ -23,7 +23,7 @@
     },
     "web": {
       "output": "static",
-        "bundler": "metro",
+      "bundler": "metro",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
@@ -38,6 +38,14 @@
           "dark": {
             "backgroundColor": "#000000"
           }
+        }
+      ],
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "project": "food-delivery",
+          "organization": "dmtech-le"
         }
       ]
     ],

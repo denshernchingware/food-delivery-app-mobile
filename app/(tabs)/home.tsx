@@ -1,19 +1,20 @@
-import {SafeAreaView} from "react-native-safe-area-context";
-import { FlatList, Image, Pressable, Text, TouchableOpacity, View} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import {FlatList, Image, Pressable, Text, TouchableOpacity, View} from "react-native";
 import {Fragment} from "react";
 import cn from 'clsx';
-
 import CartButton from "../components/CartButton";
 import {images, offers} from "@/constants";
 import { Link, Redirect } from "expo-router";
-// import useAuthStore from "@/store/auth.store";
+import useAuthStore from "@/store/auth.store";
+
+
 
 
 
 export default function Index() {
-  // const { user } = useAuthStore();
-// const isAuth =false;
-// if (!isAuth) return <Redirect href={'/sign-in'} />
+  const { user } = useAuthStore();
+ 
+
   return (
       <SafeAreaView className="flex-1 bg-white">
       <FlatList
@@ -25,7 +26,7 @@ export default function Index() {
                       <View className="flex-start">
                           <Text className="small-bold text-primary">DELIVER TO</Text>
                           <TouchableOpacity className="flex-center flex-row gap-x-1 mt-0.5">
-                              <Text className="paragraph-bold text-dark-100">Croatia</Text>
+                              <Text className="paragraph-bold text-dark-100">{user?.name}</Text>
                               <Image source={images.arrowDown} className="size-3" resizeMode="contain" />
                           </TouchableOpacity>
                       </View>
@@ -33,7 +34,6 @@ export default function Index() {
                       <CartButton />
                   </View>
               )}
-
         //body
               data={offers}
               renderItem={({ item, index }) => {
